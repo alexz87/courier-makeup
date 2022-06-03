@@ -66,15 +66,18 @@
             $this->view('user/reports', $data);
         }
 
-        public function edit() {
+        public function orders() {
+            $orders = $this->model('Orders');
+            $json = $orders->getJSON(1);
+            
             $data = [
                 'lang' => 'ua',
-                'title' => 'Редагування', 
-                'content' => 'Редагування інформації користувача',
-                'user' => 'admin',
+                'title' => 'json',
+                'content' => 'json',
+                'json' => $json
             ];
 
-            $this->view('user/edit', $data);
+            $this->view('user/orders', $data);
         }
         
         public function auth() {

@@ -253,4 +253,10 @@
 
             return $result->fetch(PDO::FETCH_ASSOC);
         }
+
+		public function getJSON($id) {
+			$result = $this->_db->query("SELECT * FROM `courier_makeup` WHERE `id` = '$id'");
+			
+			return $json = json_encode($result->fetch(PDO::FETCH_ASSOC));
+		}
 	}
