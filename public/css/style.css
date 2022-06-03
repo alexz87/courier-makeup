@@ -1,0 +1,237 @@
+@import url('/public/css/app.css');
+
+/* --- HEADER --- */
+
+.header {border-bottom: 4px solid #000}
+.header__box, .footer__box {
+	padding: 30px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header__menu {
+	display: flex;
+	flex-direction: column;
+}
+.header__menu:hover{cursor: pointer}
+.header__logo {position: relative}
+.header__logo::after {
+	content: 'courier';
+	width: 30px;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	color: var(--my-black);
+}
+.header__line {
+	width: 26px;
+	margin: 2px 0;
+	border-bottom: 3.5px solid #000;
+	
+}
+
+/* --- MENU --- */
+
+.menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 350px;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: var(--my-dark);
+	z-index: 99;
+}
+.menu__logo {
+	width: 100%;
+	padding: 60px 0;
+	border-bottom: 3.5px solid #ccc;
+	text-align: center;
+}
+.menu__link {
+	width: 90%;
+	padding: 40px 0;
+	font-size: 18px;
+	border-bottom: 2px solid var(--my-gray);
+	text-align: center;
+}
+.menu__link:last-child {border: 0}
+.link {color: var(--my-gray)}
+.close-menu {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.close-menu:hover {cursor: pointer}
+
+/* --- PAYDESK & ORDERS --- */
+.mycash__box {
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.cash, .orders, .mycash {
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.inform {
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	gap: 20px;
+}
+.banknotes, .paydesk, .all-orders, .my-cash {
+	width: 100px;
+	height: 30px;
+	padding: 5px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+}
+.my-cash {margin-bottom: 7px}
+.info {
+	padding: 10px;
+	border: 2px solid #000;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.hr {
+	width: 100%;
+	border-bottom: 2px solid #000;
+	margin: 20px 0;
+}
+.menu-orders {
+	width: 100%;
+	border: 2px solid #000;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.everyday {
+	width: 50%;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.weekend {
+	width: 50%;
+	background: var(--my-orange);
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.full-orders, .salary {
+	width: 100%;
+	margin-top: 20px;
+	padding: 5px 0;
+	border: 2px solid #000;
+	border-radius: 5px;
+	text-align: center;
+}
+
+/* --- AUTH & REG & DASHBOARD */
+
+.auth, .reg {
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.input-auth, .input-reg {
+	margin-top: 10px;
+	min-width: 300px;
+	height: 30px;
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+}
+.error {margin-top: 5px}
+
+.users {
+	margin: 20px 0;
+}
+.edit-btns {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.edit, .user-info, .upload {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.edit {
+	display: none;
+	margin-bottom: 20px;
+}
+#ok {display: none}
+.upload {
+	margin: 10px;
+	padding: 5px;
+	border: 2px solid var(--my-black);
+	border-radius: 10px;
+}
+#photo {
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+    border: 2px solid var(--my-green);
+    margin: 10px 0;
+}
+#uploadPhoto {margin: 10px 0}
+.add-photo {
+	margin-top: 10px;
+	width: 250px;
+	height: 30px;
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+}
+
+/* --- REPORTS --- */
+
+.reports {
+	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.report {
+	margin-top: 20px;
+	padding: 10px;
+	border: 2px solid #000;
+	border-radius: 10px;
+}
+
+/* --- FOOTER --- */
+
+.footer {border-top: 4px solid #000}
+.ua {
+	color: var(--my-yellow);
+	background: var(--my-ligth-blue);
+	padding: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

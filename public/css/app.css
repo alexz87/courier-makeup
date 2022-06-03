@@ -1,0 +1,163 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+
+:root {
+  --my-black: #000;
+  --my-dark: #333;
+  --my-white: #fff;
+  --my-red: #ff2800;
+  --my-blue: #0000ff;
+  --my-ligth-blue: #0080ff;
+  --my-yellow: #ffff00;
+  --my-green: #008000;
+  --my-orange: #ff9900;
+  --my-gray: #ccc;
+  --bg-color: #272a2b; /* #295663; #344b5e;*/
+  --itp-red: #ff5644;
+  --all-shadow: 0px 7px 15px black;
+  --footer-shadow: 0px -7px 15px black;
+  --normal: 400;
+  --medium: 600;
+  --bold: 700;
+  --dark: 900;
+  --Montserrat: 'Montserrat', sans-serif;
+  --ua-gradient: linear-gradient(35deg, #ffff00, #0080ff);
+}
+
+* {
+	margin: 0;
+	padding:0;
+	outline: none;
+	text-decoration: none;
+}
+
+a {color: #000}
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+html, body {width: 100%}
+body {
+	color: #000;
+	background: #fff;
+	font-size: 16px;
+	font-weight: 400;
+	font-family: var(--Montserrat);
+}
+
+.container {
+	width: 90%;
+	margin: 0 5%;
+}
+
+@media(min-width: 900px) {
+  .container {
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+
+.btn {
+	min-width: 110px;
+	min-height: 44px;
+	font-size: 16px;
+  font-weight: var(--medium);
+	padding: 5px;
+	color: #000;
+	border-radius: 5px;
+	border: 2px solid #000;
+	background: #fff;
+  transition: all 600ms;
+}
+
+.btn-ligth {
+  margin-bottom: 10px;
+  color: var(--my-black);
+  border: 2px solid var(--my-black);
+	background: var(--my-white);
+}
+.btn-ligth:hover {
+  cursor: pointer;
+  color: var(--my-white);
+  border-color: var(--my-black);
+	background: var(--my-black);
+}
+.btn-success {
+  margin-bottom: 10px;
+  color: var(--my-white);
+  border: 2px solid var(--my-green);
+	background: var(--my-green);
+}
+.btn-success:hover {
+  cursor: pointer;
+  color: var(--my-green);
+  border-color: var(--my-green);
+	background: var(--my-white);
+}
+.btn-warning {
+  margin-bottom: 10px;
+  color: var(--my-white);
+  border: 2px solid var(--my-orange);
+	background: var(--my-orange);
+}
+.btn-warning:hover {
+  cursor: pointer;
+  color: var(--my-orange);
+  border-color: var(--my-orange);
+	background: var(--my-white);
+}
+.btn-danger {
+  margin-bottom: 10px;
+  color: var(--my-white);
+  border: 2px solid var(--my-red);
+	background: var(--my-red);
+}
+.btn-danger:hover {
+  cursor: pointer;
+  color: var(--my-red);
+  border-color: var(--my-red);
+	background: var(--my-white);
+}
+.btn-dark {
+  margin-bottom: 10px;
+  color: var(--my-white);
+  border: 2px solid var(--my-black);
+	background: var(--my-black);
+}
+.btn-dark:hover {
+  cursor: pointer;
+  color: var(--my-black);
+  border-color: var(--my-black);
+	background: var(--my-gray);
+}
+
+.success {color: var(--my-green)}
+.warning {color: var(--my-orange)}
+.danger {color: var(--my-red)}
+
+.bg-success {background: var(--my-green)}
+.bg-warning {background: var(--my-orange)}
+.bg-danger {background: (--my-red)}
+
+@keyframes bell {
+  5% {transform: translateY(-10px)}
+  10% {transform: translateY(10px)}
+  15% {transform: translateY(-10px)}
+  20% {transform: translateY(0px)}
+}
+
+@keyframes arrow {
+  5% {transform: translateX(-10px)}
+  10% {transform: translateX(10px)}
+  15% {transform: translateX(-10px)}
+  20% {transform: translateX(0px)}
+}
+
+@keyframes pdf {
+  0% {transform: scale(1)}
+  50% {transform: scale(1.1)}
+  100% {transform: scale(1)}
+}

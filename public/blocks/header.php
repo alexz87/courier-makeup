@@ -1,0 +1,102 @@
+<header class="header">
+    <div class="header__box container">
+        <div class="header__menu" id="open">
+            <div class="header__line"></div>
+            <div class="header__line"></div>
+            <div class="header__line"></div>
+        </div>
+        
+        <?php if ($_COOKIE['login'] != ''): ?>
+
+            <div class="header__logo">
+                <a href="/"><h1>MAKEUP</h1></a>
+            </div>
+            <div class="header__user">
+
+                <?php if (date('N') == 6 || date('N') == 7): ?>
+
+                    <h3 class="warning"><?=date('d.m')?></h3>
+
+                <?php else: ?>
+
+                    <h3 class="success"><?=date('d.m')?></h3>
+
+                <?php endif; ?>
+
+            </div>
+
+        <?php else: ?>
+
+            <div class="header__ua">
+                <h4>Рускій воєнний корабль, іді нахуй</h4>
+            </div>
+
+        <?php endif; ?>
+        
+    </div>
+    <div class="menu" id="menu">
+            <div class="close-menu" id="close"><h1 class="danger">X</h1></div>
+            <div class="menu__logo">
+                <a href="/"><h1 class="link">MAKEUP</h1></a>
+            </div>
+
+            <?php if ($_COOKIE['login'] != ''): ?>
+
+                <div class="menu__link">
+                        <a href="/"><h3 class="link">Головна</h3></a>
+                </div>
+                <div class="menu__link">
+				
+					<?php if ($_COOKIE['login'] == 'admin' || $_COOKIE['login'] == 'alexproger'): ?>
+					
+						<a href="/user/dashboard"><h3 class="link">Кабінет</h3></a>
+						
+					<?php endif; ?>
+					
+                </div>
+                <div class="menu__link">
+                        <a href="/user/reports"><h3 class="link">Звіти</h3></a>
+                </div>
+                <div class="menu__link">
+                        <a href="/home/contact"><h3 class="link">Контакт</h3></a>
+                </div>
+                <div class="menu__link">
+                    <form action="/user/dashboard" method="post">
+                        <input type="hidden" name="exit_btn">
+                        <button type="submit" class="btn btn-danger" id="back">Вийти</button><br>
+                        <label for="exit_btn"><?=$_COOKIE['login']?></label>
+                    </form>
+                </div>
+
+            <?php else: ?>
+
+                <div class="menu__link">
+                        <a href="/"><h3 class="link">Головна</h3></a>
+                </div>
+                <div class="menu__link">
+                        <a href="/user/auth"><h3 class="link">Увійти</h3></a>
+                </div>
+                <div class="menu__link">
+                        <a href="/"><h3 class="link">Контакт</h3></a>
+                </div>
+                
+            <?php endif; ?>
+    </div>
+</header>
+
+<script src="public/js/jquery360.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $('#open').click(function() {
+        $('#menu').css({
+            "display" : "flex"
+        });
+    });
+
+    
+    $('#close').click(function() {
+        $('#menu').css({
+            "display" : "none"
+        });
+    });
+</script>
