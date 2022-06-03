@@ -1,4 +1,7 @@
 <header class="header">
+
+        <!-- BUTTON MENU -->
+
     <div class="header__box container">
         <div class="header__menu" id="open">
             <div class="header__line"></div>
@@ -6,12 +9,17 @@
             <div class="header__line"></div>
         </div>
         
+            <!-- LOGO -->
+
         <?php if ($_COOKIE['login'] != ''): ?>
 
             <div class="header__logo">
                 <a href="/"><h1>MAKEUP</h1></a>
             </div>
-            <div class="header__user">
+
+            <!-- DATE -->
+
+            <div class="header__date">
 
                 <?php if (date('N') == 6 || date('N') == 7): ?>
 
@@ -27,6 +35,8 @@
 
         <?php else: ?>
 
+                <!-- ALTERNATIVE LOGO -->
+
             <div class="header__ua">
                 <h4>Рускій воєнний корабль, іді нахуй</h4>
             </div>
@@ -34,6 +44,9 @@
         <?php endif; ?>
         
     </div>
+
+            <!-- MENU -->
+
     <div class="menu" id="menu">
             <div class="close-menu" id="close"><h1 class="danger">X</h1></div>
             <div class="menu__logo">
@@ -43,28 +56,28 @@
             <?php if ($_COOKIE['login'] != ''): ?>
 
                 <div class="menu__link">
-                        <a href="/"><h3 class="link">Головна</h3></a>
+                    <a href="/"><h3 class="link">Головна</h3></a>
                 </div>
-                <div class="menu__link">
 				
-					<?php if ($_COOKIE['login'] == 'admin' || $_COOKIE['login'] == 'alexproger'): ?>
+                <?php if ($_COOKIE['login'] == 'admin'): ?>
+                
+                    <div class="menu__link">
+                        <a href="/user/dashboard"><h3 class="link">Кабінет</h3></a>
+                    </div>
+                    
+                <?php endif; ?>
 					
-						<a href="/user/dashboard"><h3 class="link">Кабінет</h3></a>
-						
-					<?php endif; ?>
-					
+                <div class="menu__link">
+                    <a href="/user/reports"><h3 class="link">Звіти</h3></a>
                 </div>
                 <div class="menu__link">
-                        <a href="/user/reports"><h3 class="link">Звіти</h3></a>
-                </div>
-                <div class="menu__link">
-                        <a href="/home/contact"><h3 class="link">Контакт</h3></a>
+                    <a href="/home/contact"><h3 class="link">Контакт</h3></a>
                 </div>
                 <div class="menu__link">
                     <form action="/user/dashboard" method="post">
                         <input type="hidden" name="exit_btn">
                         <button type="submit" class="btn btn-danger" id="back">Вийти</button><br>
-                        <label for="exit_btn"><?=$_COOKIE['login']?></label>
+                        <label for="exit_btn" class="warning"><?=$_COOKIE['login']?></label>
                     </form>
                 </div>
 

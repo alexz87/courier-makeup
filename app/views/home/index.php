@@ -17,17 +17,30 @@
 		<?php require 'public/blocks/header.php'; ?>
 		
 		<div class="block container">
-			<div class="mycash">
-				<h3>Мої кошти</h3>
-				<form action="/" method="post" class="mycash__box">
-					<input type="number" name="myCash" id="myCash" placeholder="Мої кошти" class="my-cash">
-					<button class="btn btn-dark" id="my-cash-btn">Додати</button>
-				</form>
-				<div class="info"><b><?=$data['myCash']->myCash?></b></div>
-			</div>
-			<div class="hr"></div>
+			
+			<?php if ($_COOKIE['login'] == 'admin'): ?>
+
+				<div class="mycash">
+					<h3>Мої кошти:</h3>
+					<form action="/" method="post" class="inform">
+						<input type="number" name="myCash" id="myCash" placeholder="Мої кошти" class="my-cash">
+						<button class="btn btn-dark" id="my-cash-btn">Додати</button>
+						<div class="my-cash warning"><b><?=$data['myCash']?> UAH</b></div>
+					</form>
+					<div class="hr"></div>
+					<h3>Витрачені чайові:</h3>
+					<form action="/" method="post" class="inform">
+						<input type="number" name="spentTips" id="spentTips" placeholder="Чайові" class="my-tip">
+						<button class="btn btn-warning" id="my-cash-btn">Додати</button>
+						<div class="my-tip danger"><b><?=$data['spentTips']?> UAH</b></div>
+					</form>
+				</div>
+				<div class="hr"></div>
+
+			<?php endif; ?>
+
 			<div class="cash">
-				<h3>Підрахунок каси</h3>
+				<h3>Підрахунок каси:</h3>
 				<form action="/" method="post" class="inform">
 					<input type="number" name="banknotes1000" id="1000" placeholder="1000 UAH" class="banknotes">
 					<input type="number" name="banknotes500" id="500" placeholder="500 UAH" class="banknotes">
@@ -48,7 +61,7 @@
 			</div>
 			<div class="hr"></div>
 			<div class="orders">
-				<h3>Кількість заказів</h3>
+				<h3>Кількість заказів:</h3>
 				<form action="/" method="post" class="inform">
 					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders">
 					<input type="number" name="newPost" id="newPost" placeholder="НП" class="all-orders">
@@ -57,17 +70,38 @@
 				<div class="menu-orders">
 					<div class="everyday">
 						<div><h4>Буденні дні:</h4></div>
-						<div><h5>Замовлення: <?=$data['getOrders']->orders?> шт.</h5></div>
-						<div><h5>Нова Пошта: <?=$data['getOrders']->newPost?> шт.</h5></div>
+						<div><h5>Замовлення: <?=$data['orders']?> шт.</h5></div>
+						<div><h5>Нова Пошта: <?=$data['newPost']?> шт.</h5></div>
 					</div>
 					<div class="weekend">
 						<div><h4>Вихідні дні:</h4></div>
-						<div><h5>Замовлення: <?=$data['getOrders']->weekendOrders?> шт.</h5></div>
-						<div><h5>Нова Пошта: <?=$data['getOrders']->weekendNewPost?> шт.</h5></div>
+						<div><h5>Замовлення: <?=$data['weekendOrders']?> шт.</h5></div>
+						<div><h5>Нова Пошта: <?=$data['weekendNewPost']?> шт.</h5></div>
 					</div>
 				</div>
-				<div class="full-orders"><h2>Замовлення: <?=$data['getOrders']->fullOrders?> шт.</h2></div>
-				<div class="salary"><h2>ЗП: <?=$data['getOrders']->salary?> UAH</h2></div>
+
+				<?php if ($data['fullOrders'] < 1000): ?>
+
+					<div class="full-orders warning"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
+
+				<?php else: ?>
+
+					<div class="full-orders success"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
+
+				<?php endif;?>
+				<?php if ($data['salary'] < 15000): ?>
+
+					<div class="salary"><h2 class="danger">ЗП: <?=$data['salary']?> UAH</h2></div>
+
+				<?php elseif ($data['salary'] < 20000): ?>
+
+					<div class="salary"><h2 class="warning">ЗП: <?=$data['salary']?> UAH</h2></div>
+
+				<?php else: ?>
+
+					<div class="salary"><h2 class="success">ЗП: <?=$data['salary']?> UAH</h2></div>
+
+				<?php endif;?>
 			</div>
 		</div>
 
