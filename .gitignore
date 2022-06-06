@@ -1,4 +1,4 @@
+.gitignore
 /app/models/DB.php
 .htaccess
 /public/img
-/public/php
