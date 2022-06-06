@@ -1,5 +1,7 @@
 <?php
 
+    //require 'public/php/ajax.php';
+
     class Home extends Controller {
 
         public function index() {
@@ -13,8 +15,24 @@
                 exit();
             }
 
+            if ($orders->getOrders()->day != date('d')) {
+                $orders->newDay(date('d'), 0);
+            }
+
             if (isset($_POST['myCash'])) {
-                $orders->setMyCash($_POST['myCash']);
+                if ($orders->getOrders()->day != date('d')) {
+    
+                    $orders->newDay(date('d'), $_POST['myCash']);
+                } else {
+                    $this->day = date('d');
+                    $myCash = $orders->getOrders()->myCash + $_POST['myCash'];
+    
+                    $orders->newDay(date('d'), $myCash);
+                }
+            }
+
+            if (isset($_POST['spentTips'])) {
+                $orders->addSpentTips(($orders->getOrders()->spentTips + $_POST['spentTips']));
             }
 
             if (isset($_POST['login'])) {
@@ -71,6 +89,7 @@
             $salary = $orders->getOrders()->salary;
             $myCash = $orders->getOrders()->myCash;
             $spentTips = $orders->getOrders()->spentTips;
+            $tip = $orders->getOrders()->tip;
 
             $data = [
                 'lang' => 'ua',
@@ -86,7 +105,8 @@
                 'salary' => $salary,
                 'info' => $info,
                 'myCash' => $myCash,
-                'spentTips' => $spentTips
+                'spentTips' => $spentTips,
+                'tip' => $tip
             ];
 
             $this->view('home/index', $data);

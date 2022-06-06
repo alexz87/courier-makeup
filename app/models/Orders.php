@@ -125,52 +125,20 @@
 			}
 		}
 
-		public function setMyCash($myCash) {
-			$day = $this->getTip();
-
-			if ($day->day != date('d')) {
-				$this->day = date('d');
-				$this->myCash = $myCash;
-
-				$this->newDay();
-			} else {
-				$this->day = date('d');
-				$this->myCash = $day->myCash + $myCash;
-
-				$this->newDay();
-			}
-		}
-
 		public function setTip($tip) {
 			$getTip = $this->getTip();
 
-			if ($getTip->mounth != date('m')) {
-				$this->tip = $tip - $getTip->myCash;
-			} else {
-				$this->tip = $getTip->tip + ($tip - $getTip->myCash);
-			}
-
-			if ($getTip->day != date('d')) {
-				$this->day = date('d');
-				$this->myCash = 0;
-
-				$this->newDay();
-			} else {
-				$this->day = date('d');
-				$this->myCash = $getTip->myCash;
-
-				$this->newDay();
-			}
+			$this->tip = $getTip->tip + ($tip - $getTip->myCash);
 
 			$this->addTip();
 		}
 
-		public function newDay() {
+		public function newDay($day, $myCash) {
 			$id = $this->getUser()['id'];
 
 			$sql = "UPDATE `courier_makeup` SET `day` = :day, `myCash` = :myCash WHERE `id` = '$id'";
             $query = $this->_db->prepare($sql);
-            $query->execute(['day' => $this->day, 'myCash' => $this->myCash]);
+            $query->execute(['day' => $day, 'myCash' => $myCash]);
 		}
 
 		public function addOrders() {
@@ -229,6 +197,14 @@
 			$sql = "UPDATE `courier_makeup` SET `tip` = :tip WHERE `id` = '$id'";
 			$query = $this->_db->prepare($sql);
 			$query->execute(['tip' => $this->tip]);
+		}
+
+		public function addSpentTips($spentTips) {
+			$id = $this->getUser()['id'];
+
+			$sql = "UPDATE `courier_makeup` SET `spentTips` = :spentTips WHERE `id` = '$id'";
+			$query = $this->_db->prepare($sql);
+			$query->execute(['spentTips' => $spentTips]);
 		}
 		
 		public function getOrders() {

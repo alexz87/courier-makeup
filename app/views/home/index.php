@@ -22,18 +22,29 @@
 
 				<div class="mycash">
 					<h3>Мої кошти:</h3>
-					<form action="/" method="post" class="inform">
+					<div class="inform">
 						<input type="number" name="myCash" id="myCash" placeholder="Мої кошти" class="my-cash">
 						<button class="btn btn-dark" id="my-cash-btn">Додати</button>
 						<div class="my-cash warning"><b><?=$data['myCash']?> UAH</b></div>
-					</form>
-					<div class="hr"></div>
+					</div>
+				</div>
+				<div class="hr"></div>
+				<div class="tips">
 					<h3>Витрачені чайові:</h3>
-					<form action="/" method="post" class="inform">
+					<div class="inform">
 						<input type="number" name="spentTips" id="spentTips" placeholder="Чайові" class="my-tip">
-						<button class="btn btn-warning" id="my-cash-btn">Додати</button>
-						<div class="my-tip danger"><b><?=$data['spentTips']?> UAH</b></div>
-					</form>
+						<button class="btn btn-warning" id="spent-tips-btn">Додати</button>
+						<div class="spent-tip danger"><b><?=$data['spentTips']?> UAH</b></div>
+					</div>
+				</div>
+				<div class="hr"></div>
+				<div class="tips">
+					<h3>Чайові:</h3>
+					<div class="inform">
+						<input type="number" name="tip" id="add-tip" placeholder="Чайові" class="my-tip">
+						<button class="btn btn-success" id="tip-btn">Додати</button>
+						<div class="my-tip success"><b><?=$data['tip']?> UAH</b></div>
+					</div>
 				</div>
 				<div class="hr"></div>
 
@@ -62,46 +73,25 @@
 			<div class="hr"></div>
 			<div class="orders">
 				<h3>Кількість заказів:</h3>
-				<form action="/" method="post" class="inform">
+				<div class="inform">
 					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders">
 					<input type="number" name="newPost" id="newPost" placeholder="НП" class="all-orders">
 					<button class="btn btn-dark" id="orders-btn">Додати</button>
-				</form>
+				</div>
 				<div class="menu-orders">
 					<div class="everyday">
 						<div><h4>Буденні дні:</h4></div>
-						<div><h5>Замовлення: <?=$data['orders']?> шт.</h5></div>
-						<div><h5>Нова Пошта: <?=$data['newPost']?> шт.</h5></div>
+						<div class="everyday__orders"><h5>Замовлення: <?=$data['orders']?> шт.</h5></div>
+						<div class="everyday__new-post"><h5>Нова Пошта: <?=$data['newPost']?> шт.</h5></div>
 					</div>
 					<div class="weekend">
 						<div><h4>Вихідні дні:</h4></div>
-						<div><h5>Замовлення: <?=$data['weekendOrders']?> шт.</h5></div>
-						<div><h5>Нова Пошта: <?=$data['weekendNewPost']?> шт.</h5></div>
+						<div class="weekend__orders"><h5>Замовлення: <?=$data['weekendOrders']?> шт.</h5></div>
+						<div class="weekend__new-post"><h5>Нова Пошта: <?=$data['weekendNewPost']?> шт.</h5></div>
 					</div>
 				</div>
-
-				<?php if ($data['fullOrders'] < 1000): ?>
-
-					<div class="full-orders warning"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
-
-				<?php else: ?>
-
-					<div class="full-orders success"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
-
-				<?php endif;?>
-				<?php if ($data['salary'] < 15000): ?>
-
-					<div class="salary"><h2 class="danger">ЗП: <?=$data['salary']?> UAH</h2></div>
-
-				<?php elseif ($data['salary'] < 20000): ?>
-
-					<div class="salary"><h2 class="warning">ЗП: <?=$data['salary']?> UAH</h2></div>
-
-				<?php else: ?>
-
-					<div class="salary"><h2 class="success">ЗП: <?=$data['salary']?> UAH</h2></div>
-
-				<?php endif;?>
+				<div class="full-orders success"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
+				<div class="salary"><h2 class="success">ЗП: <?=$data['salary']?> UAH</h2></div>
 			</div>
 		</div>
 
@@ -126,6 +116,92 @@
 				$("#cash").val(res);
 				$("#tip").val(tip);
 			});
+
+			$('#my-cash-btn').click(function() {
+				let myCash = $('#myCash').val();
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'myCash' : myCash},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#myCash').val('');
+					} 
+				});
+			});
+
+			$('#spent-tips-btn').click(function() {
+				let spentTips = $('#spentTips').val();
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'spentTips' : spentTips},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#spentTips').val('');
+					} 
+				});
+			});
+
+			$('#orders-btn').click(function() {
+				let orders = $('#orders').val();
+				let newPost = $('#newPost').val();
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'orders' : orders, 'newPost' : newPost},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#orders').val('');
+						$('#newPost').val('');
+					} 
+				});
+			});
+
+			setInterval(function() {
+				let salary = '<?=$data['salary']?>';
+
+				$.ajax({
+					url: 'public/php/ajax.php',
+					type: 'POST',
+					data: {'salary' : salary},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						data = JSON.parse(data);
+
+						$('.my-cash').html('<b>' + data['myCash'] + ' UAH</b>');
+						$('spent-tip').html('<b>' + data['spentTips'] + ' UAH</b>');
+						$('.my-tip').html('<b>' + data['tip'] + ' UAH</b>');
+
+						let classFullOrders = 'success';
+						let classSalary = 'success';
+
+						$('.everyday__orders').html('<h5>Замовлення: ' + data['orders'] + ' шт.</h5>');
+						$('.everyday__new-post').html('<h5>Нова Пошта: ' + data['newPost'] + ' шт.</h5>');
+						$('.weekend__orders').html('<h5>Замовлення: ' + data['weekendOrders'] + ' шт.</h5>');
+						$('.weekend__new-post').html('<h5>Нова Пошта: ' + data['weekendNewPost'] + ' шт.</h5>');
+
+						if (data['fullOrders'] < 1000) {
+							classFullOrders = 'warning';
+						}
+						$('.full-orders').html('<h2 class="' + classFullOrders + '">Замовлення: ' + data['fullOrders'] + ' шт.</h2>');
+
+						if (data['salary'] < 15000) {
+							classSalary = 'danger';
+						} else if (data['salary'] < 20000) {
+							classSalary = 'warning';
+						}
+						$('.salary').html('<h2 class="' + classSalary + '">ЗП: ' + data['salary'] + ' UAH</h2>');
+					}
+				});
+			}, 1000);
 		</script>
 	</body>
 </html>

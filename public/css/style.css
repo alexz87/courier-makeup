@@ -74,7 +74,7 @@
 	justify-content: space-evenly;
 	align-items: center;
 }
-.cash, .orders, .mycash {
+.cash, .orders, .mycash, .tips {
 	width: 100%;
 	padding: 20px 0;
 	display: flex;
@@ -89,7 +89,7 @@
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 	gap: 20px;
 }
-.banknotes, .paydesk, .all-orders, .my-cash, .my-tip {
+.banknotes, .paydesk, .all-orders, .my-cash, .my-tip, .spent-tip {
 	width: 100px;
 	height: 30px;
 	padding: 5px;
@@ -99,7 +99,7 @@
 	font-size: 16px;
 }
 /* .my-cash {margin-bottom: 7px} */
-.my-tip, .my-cash {
+.my-tip, .my-cash, .spent-tip {
 	display: flex;
 	justify-content: center;
 	align-items: center;
