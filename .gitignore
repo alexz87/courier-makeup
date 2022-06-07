@@ -1,4 +1,3 @@
-.gitignore
 /app/models/DB.php
 /public/php/mysql_connect.php
 .htaccess
