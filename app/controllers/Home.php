@@ -1,14 +1,11 @@
 <?php
 
-    //require 'public/php/ajax.php';
-
     class Home extends Controller {
 
         public function index() {
 			
 			$orders = $this->model('Orders');
-            $info = '<div class="success"><b>Чайові: ' . $orders->getOrders()->tip . ' UAH</b></div>';
-
+            
             if (isset($_POST['exit_btn'])) {
                 $user = $this->model('UserModel');
                 $user->logOut();
@@ -17,6 +14,7 @@
 
             if ($orders->getOrders()->day != date('d')) {
                 $orders->newDay(date('d'), 0);
+                $orders->setCashTip(0, 0, 0);
             }
 
             if (isset($_POST['myCash'])) {
@@ -49,36 +47,15 @@
                 );
             }
 
-            if (isset($_POST['paydesk'])) {
-                $orders->setTip($_POST['tip']);
-
-                if ($_COOKIE['login'] == 'admin') {
-                    $info = 
-                        '<div><b>Сума:</b> ' . $_POST['cash'] . 
-                        ' UAH</div><div><b>Каса</b> ' . $_POST['paydesk'] . 
-                        ' UAH</div><div class="warning"><b>Мої гроші:</b> ' . $orders->getOrders()->myCash . 
-                        ' UAH</div><div class="success"><b>Чайові:</b> ' . ($_POST['tip'] - $orders->getOrders()->myCash) . 
-                        ' UAH</div>';
-                } else {
-                    $info = 
-                        '<div><b>Сума:</b> ' . $_POST['cash'] . 
-                        ' UAH</div><div><b>Каса</b> ' . $_POST['paydesk'] . 
-                        ' UAH</div><div class="success"><b>Чайові:</b> ' . $_POST['tip'] . 
-                        ' UAH</div>';
-                }
+            if (isset($_POST['addTip'])) {
+                $orders->setTip($_POST['addTip']);
             }
 
-            // if ($orders->getOrders()->salary > 999) {
-            //     $arr = explode('', $orders->getOrders()->salary);
-            //     if (count($arr) > 4) {
-            //         $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
-            //     } else {
-            //         $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
-            //     }
-            // } else {
-            //     $salary = $orders->getOrders()->salary;
-            // }
+            if (isset($_POST['paydesk'])) {
+                $orders->setCashTip($_POST['cash'], $_POST['tip'], $_POST['paydesk']);
+            }
 
+            $info = $orders->getOrders()->cash;
             $pay = $orders->this->pay;
             $weekendPay = $orders->this->weekendPay;
             $order_s = $orders->getOrders()->orders;
@@ -90,6 +67,19 @@
             $myCash = $orders->getOrders()->myCash;
             $spentTips = $orders->getOrders()->spentTips;
             $tip = $orders->getOrders()->tip;
+
+            
+            // if ($orders->getOrders()->salary > 999) {
+            //     $arr = explode('', $orders->getOrders()->salary);
+            //     if (count($arr) > 4) {
+            //         $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
+            //     } else {
+            //         $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
+            //     }
+            // } else {
+            //     $salary = $orders->getOrders()->salary;
+            // }
+
 
             $data = [
                 'lang' => 'ua',

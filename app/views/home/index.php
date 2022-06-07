@@ -52,7 +52,7 @@
 
 			<div class="cash">
 				<h3>Підрахунок каси:</h3>
-				<form action="/" method="post" class="inform">
+				<div class="inform">
 					<input type="number" name="banknotes1000" id="1000" placeholder="1000 UAH" class="banknotes">
 					<input type="number" name="banknotes500" id="500" placeholder="500 UAH" class="banknotes">
 					<input type="number" name="banknotes200" id="200" placeholder="200 UAH" class="banknotes">
@@ -67,8 +67,8 @@
 					<input type="hidden" name="cash" id="cash" class="banknotes">
 					<input type="hidden" name="tip" id="tip" class="banknotes">
 					<button class="btn btn-dark" id="cash-btn">Рахувати</button>
-				</form>
-				<div class="info"><?=$data['info']?></div>
+				</div>
+				<div class="info"><?=base64_decode($data['info'])?></div>
 			</div>
 			<div class="hr"></div>
 			<div class="orders">
@@ -147,6 +147,50 @@
 				});
 			});
 
+			$('#tip-btn').click(function() {
+				let addTip = $('#add-tip').val();
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'addTip' : addTip},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#add-tip').val('');
+					} 
+				});
+			});
+
+			$('#cash-btn').click(function() {	
+				let paydesk = $('#paydesk').val();
+				let cash = $('#cash').val();
+				let tip = $('#tip').val();
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'paydesk' : paydesk, 'cash' : cash, 'tip' : tip},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#paydesk').val('');
+						$('#cash').val('');
+						$('#tip').val('');
+						$('#1000').val('');
+						$('#500').val('');
+						$('#200').val('');
+						$('#100').val('');
+						$('#50').val('');
+						$('#20').val('');
+						$('#10').val('');
+						$('#5').val('');
+						$('#2').val('');
+						$('#1').val('');
+					} 
+				});
+			});
+
 			$('#orders-btn').click(function() {
 				let orders = $('#orders').val();
 				let newPost = $('#newPost').val();
@@ -179,6 +223,8 @@
 						$('.my-cash').html('<b>' + data['myCash'] + ' UAH</b>');
 						$('spent-tip').html('<b>' + data['spentTips'] + ' UAH</b>');
 						$('.my-tip').html('<b>' + data['tip'] + ' UAH</b>');
+
+						$('.info').html(data['cash']);
 
 						let classFullOrders = 'success';
 						let classSalary = 'success';

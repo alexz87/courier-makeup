@@ -53,6 +53,7 @@
         
         public function addUser() {
             $photo = 'IMG_none.jpg';
+            $cash = '';
             $tip = 0;
             $spentTips = 0;
             $myCash = 0;
@@ -69,13 +70,13 @@
             $weekendNewPost = 0;
             $reports = '';
             $sql = 'INSERT INTO courier_makeup(
-                    login, pass, photo, tip, spentTips, myCash,
+                    login, pass, photo, cash, tip, spentTips, myCash,
                     salary, date, mounth, day, fullOrders,
                     allOrders, allWeekendOrders, orders,
                     newPost, weekendOrders, weekendNewPost,
                     reports
                 ) VALUES(
-                    :login, :pass, :photo, :tip, :spentTips, :myCash,
+                    :login, :pass, :photo, :cash, :tip, :spentTips, :myCash,
                     :salary, :date, :mounth, :day, :fullOrders,
                     :allOrders, :allWeekendOrders, :orders,
                     :newPost, :weekendOrders, :weekendNewPost,
@@ -87,6 +88,7 @@
                 'login' => $this->login,
                 'pass' => $pass,
                 'photo' => $photo,
+                'cash' => $cash,
                 'tip' => $tip,
                 'spentTips' => $spentTips,
                 'myCash' => $myCash,

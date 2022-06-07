@@ -17,7 +17,10 @@
 		<?php require 'public/blocks/header.php'; ?>
 		
 		<div class="block container">
-			<h1>Contact</h1>
+			<div class="orders">
+				<h1>Contact</h1>
+				<h5>Всі права захищені</h5>
+			</div>
 		</div>
 
 		<?php require 'public/blocks/footer.php'; ?>

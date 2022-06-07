@@ -5,6 +5,7 @@
 	class Orders {
 		private $pay = 22.95;
 		private $weekendPay = 22.95;
+		private $cash;
 		private $tip;
 		private $myCash;
 		private $salary;
@@ -128,9 +129,22 @@
 		public function setTip($tip) {
 			$getTip = $this->getTip();
 
-			$this->tip = $getTip->tip + ($tip - $getTip->myCash);
+			$this->tip = $getTip->tip + $tip;
 
 			$this->addTip();
+		}
+
+		public function setCashTip($its_cash, $tip, $paydesk) {
+			$getTip = $this->getTip();
+
+			$this->cash = 
+					'<div><b>Сума:</b> ' . $its_cash . ' UAH</div>
+					<div><b>Каса</b> ' . $paydesk . ' UAH</div>
+					<div class="warning"><b>Зняти:</b> ' . $tip . ' UAH</div>
+					<div class="success"><b>Чайові:</b> ' . ($tip - $getTip->myCash) . ' UAH</div>';
+			$this->tip = $getTip->tip + ($tip - $getTip->myCash);
+
+			$this->addCashTip();
 		}
 
 		public function newDay($day, $myCash) {
@@ -197,6 +211,14 @@
 			$sql = "UPDATE `courier_makeup` SET `tip` = :tip WHERE `id` = '$id'";
 			$query = $this->_db->prepare($sql);
 			$query->execute(['tip' => $this->tip]);
+		}
+
+		public function addCashTip() {
+			$id = $this->getUser()['id'];
+
+			$sql = "UPDATE `courier_makeup` SET `cash` = :cash, `tip` = :tip WHERE `id` = '$id'";
+			$query = $this->_db->prepare($sql);
+			$query->execute(['cash' => base64_encode($this->cash), 'tip' => $this->tip]);
 		}
 
 		public function addSpentTips($spentTips) {
