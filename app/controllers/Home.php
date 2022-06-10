@@ -41,7 +41,7 @@
                 );
             }
 
-            if (isset($_POST['orders'])) {
+            if (isset($_POST['orders']) || isset($_POST['newPost'])) {
                 $orders->setOrders(
                     $_POST['orders'],
                     $_POST['newPost']

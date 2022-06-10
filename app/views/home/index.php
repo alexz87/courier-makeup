@@ -75,7 +75,11 @@
 				<h3>Кількість заказів:</h3>
 				<div class="inform">
 					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders">
-					<input type="number" name="newPost" id="newPost" placeholder="НП" class="all-orders">
+					<div class="all-orders np d-flex justify-between align-center">
+						<button class="btn-plus plus">+</button>
+						<button class="btn-plus minus">–</button>
+					</div>
+					<!-- <input type="number" name="newPost" id="newPost" placeholder="НП" class="all-orders"> -->
 					<button class="btn btn-dark" id="orders-btn">Додати</button>
 				</div>
 				<div class="menu-orders">
@@ -203,7 +207,65 @@
 					cache: false,
 					success: function(data) {
 						$('#orders').val('');
-						$('#newPost').val('');
+						// $('#newPost').val('');
+					} 
+				});
+			});
+
+			$('.plus').click(function() {
+				$('.plus').css({
+					"background" : "#008000",
+					"color" : "#fff"
+				});
+				$('.plus').html('+1');
+				let orders = 0;
+				let newPost = 1;
+
+				setTimeout(function() {
+					$('.plus').css({
+						"background" : "#fff",
+						"color" : "#000"
+					});
+					$('.plus').html('+');
+				}, 1000);
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'orders' : orders, 'newPost' : newPost},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#orders').val('');
+					} 
+				});
+			});
+
+			$('.minus').click(function() {
+				$('.minus').css({
+					"background" : "#ff2800",
+					"color" : "#fff"
+				});
+				$('.minus').html('–1');
+				let orders = 0;
+				let newPost = -1;
+
+				setTimeout(function() {
+					$('.minus').css({
+						"background" : "#fff",
+						"color" : "#000"
+					});
+					$('.minus').html('–');
+				}, 1000);
+				
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'orders' : orders, 'newPost' : newPost},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#orders').val('');
 					} 
 				});
 			});

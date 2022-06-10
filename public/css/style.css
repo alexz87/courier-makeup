@@ -96,6 +96,31 @@
 	text-align: center;
 	font-size: 16px;
 }
+.np {border: 0}
+.btn-plus {
+	min-width: 43px;
+	min-height: 43px;
+	margin-bottom: -3px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 900;
+	text-align: center;
+	background: var(--my-white);
+	color: var(--my-black);
+	position: relative;
+	transition: all 600ms ease;
+}
+.plus::before {
+	content: 'Нова Пошта';
+	width: 110px;
+	position: absolute;
+	top: -23px;
+	left: -7px;
+	color: var(--my-white);
+	background: var(--my-red);
+	border-radius: 5px;
+}
 .my-tip, .my-cash, .spent-tip {
 	display: flex;
 	justify-content: center;
