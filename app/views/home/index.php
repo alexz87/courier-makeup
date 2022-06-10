@@ -221,7 +221,7 @@
 						data = JSON.parse(data);
 
 						$('.my-cash').html('<b>' + data['myCash'] + ' UAH</b>');
-						$('spent-tip').html('<b>' + data['spentTips'] + ' UAH</b>');
+						$('.spent-tip').html('<b>' + data['spentTips'] + ' UAH</b>');
 						$('.my-tip').html('<b>' + data['tip'] + ' UAH</b>');
 
 						$('.info').html(data['cash']);

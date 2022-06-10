@@ -31,6 +31,7 @@
 
             if (isset($_POST['spentTips'])) {
                 $orders->addSpentTips(($orders->getOrders()->spentTips + $_POST['spentTips']));
+                $orders->setTip('-' . $_POST['spentTips']);
             }
 
             if (isset($_POST['login'])) {
