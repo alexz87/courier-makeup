@@ -69,9 +69,18 @@
 					dataType: 'html',
 					cache: false,
 					success: function(data) {
-						$('#name').val('');
-						$('#tel').val('');
-						$('#mess').val('');
+						if (data == 'error') {
+							$('#btn-teleg').attr('class', 'btn btn-danger');
+							$('#btn-teleg').html('Помилка');
+							setTimeout(function() {
+								$('#btn-teleg').attr('class', 'btn btn-warning');
+								$('#btn-teleg').html('Надіслати');
+							}, 1000);
+						} else {
+							$('#name').val('');
+							$('#tel').val('');
+							$('#mess').val('');
+						}
 					} 
 				});
 			});
