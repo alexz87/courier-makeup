@@ -79,16 +79,16 @@
             }
 
             
-            // if ($orders->getOrders()->salary > 999) {
-            //     $arr = explode('', $orders->getOrders()->salary);
-            //     if (count($arr) > 4) {
-            //         $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
-            //     } else {
-            //         $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
-            //     }
-            // } else {
-            //     $salary = $orders->getOrders()->salary;
-            // }
+            if ($orders->getOrders()->salary > 999) {
+                $arr = str_split($orders->getOrders()->salary);
+                if (count($arr) > 4) {
+                    $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
+                } else {
+                    $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
+                }
+            } else {
+                $salary = $orders->getOrders()->salary;
+            }
 
 
             $data = [

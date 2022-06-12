@@ -9,6 +9,14 @@
         $query->execute();
         $orders = $query->fetch(PDO::FETCH_ASSOC);
 
+        if ($orders['salary'] > 999) {
+            $arr = str_split($orders['salary']);
+            if (count($arr) > 4) {
+                $orders['salary'] = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
+            } else {
+                $orders['salary'] = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
+            }
+        }
         $orders['cash'] = base64_decode($orders['cash']);
 
         echo json_encode($orders);
