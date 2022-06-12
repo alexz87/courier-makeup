@@ -11,7 +11,7 @@
             <div class="auth">
                 <form action="/user/auth" method="post" class="form-control">
                     <h1>Авторизація користувача:</h1>
-                    <input type="text" name="login" placeholder="Введіть login:" value="<?=$data['login']?>" class="input-auth"><br>
+                    <input type="tel" name="login" pattern="[0-9]{10}" placeholder="Введіть телефон (0931234567):" value="<?=$data['login']?>" class="input-auth"><br>
                     <input type="password" name="pass" placeholder="Введіть пароль:" value="<?=$data['pass']?>" class="input-auth"><br>
                     <div class="error danger"><h4><?=$data['message']?></h4></div><br>
                     <button class="btn btn-success" id="load">Увійти</button><br>

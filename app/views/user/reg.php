@@ -11,7 +11,7 @@
             <div class="reg">
                 <form action="/user/reg" method="post" class="form-control">
                     <h1>Реєстрація користувача:</h1>
-                    <input type="text" name="login" placeholder="Введіть login:"  value="<?=$_POST['login']?>"  class="input-reg"><br>
+                    <input type="tel" name="login" pattern="[0-9]{10}" placeholder="Введіть телефон (0931234567):" value="<?=$_POST['login']?>"  class="input-reg"><br>
                     <input type="password" name="pass" placeholder="Введіть пароль:"  value="<?=$_POST['pass']?>"  class="input-reg"><br>
                     <input type="password" name="re_pass" placeholder="Перевірка пароля:"  value="<?=$_POST['re_pass']?>"  class="input-reg"><br>
                     <div class="error danger"><h4><?=$data['message']?></h4></div><br>

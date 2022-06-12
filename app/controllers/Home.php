@@ -6,6 +6,7 @@
 			
 			$orders = $this->model('Orders');
             
+            
             if (isset($_POST['exit_btn'])) {
                 $user = $this->model('UserModel');
                 $user->logOut();
@@ -68,6 +69,14 @@
             $myCash = $orders->getOrders()->myCash;
             $spentTips = $orders->getOrders()->spentTips;
             $tip = $orders->getOrders()->tip;
+            $attr = '';
+            $class = '';
+            $btndis = '';
+            if (date('N') == 6 || date('N') == 7) {
+                $attr = ' disabled';
+                $class = ' disabled';
+                $btndis = ' btn-dis';
+            }
 
             
             // if ($orders->getOrders()->salary > 999) {
@@ -97,7 +106,10 @@
                 'info' => $info,
                 'myCash' => $myCash,
                 'spentTips' => $spentTips,
-                'tip' => $tip
+                'tip' => $tip,
+                'attr' => $attr,
+                'class' => $class,
+                'btn-dis' => $btndis
             ];
 
             $this->view('home/index', $data);

@@ -59,7 +59,7 @@
                     <a href="/"><h3 class="link">Головна</h3></a>
                 </div>
 				
-                <?php if ($_COOKIE['login'] == 'admin'): ?>
+                <?php if ($_COOKIE['login'] == '0939947369'): ?>
                 
                     <div class="menu__link">
                         <a href="/user/dashboard"><h3 class="link">Кабінет</h3></a>

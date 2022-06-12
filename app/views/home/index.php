@@ -18,7 +18,7 @@
 		
 		<div class="block container">
 			
-			<?php if ($_COOKIE['login'] == 'admin'): ?>
+			<?php if ($_COOKIE['login'] == '0939947369'): ?>
 
 				<div class="mycash">
 					<h3>Мої кошти:</h3>
@@ -50,52 +50,52 @@
 
 			<?php endif; ?>
 
-			<div class="cash">
+			<div class="cash<?=$data['class']?>">
 				<h3>Підрахунок каси:</h3>
 				<div class="inform">
-					<input type="number" name="banknotes1000" id="1000" placeholder="1000 UAH" class="banknotes">
-					<input type="number" name="banknotes500" id="500" placeholder="500 UAH" class="banknotes">
-					<input type="number" name="banknotes200" id="200" placeholder="200 UAH" class="banknotes">
-					<input type="number" name="banknotes100" id="100" placeholder="100 UAH" class="banknotes">
-					<input type="number" name="banknotes50" id="50" placeholder="50 UAH" class="banknotes">
-					<input type="number" name="banknotes20" id="20" placeholder="20 UAH" class="banknotes">
-					<input type="number" name="banknotes10" id="10" placeholder="10 UAH" class="banknotes">
-					<input type="number" name="banknotes5" id="5" placeholder="5 UAH" class="banknotes">
-					<input type="number" name="banknotes2" id="2" placeholder="2 UAH" class="banknotes">
-					<input type="number" name="banknotes1" id="1" placeholder="1 UAH" class="banknotes">
-					<input type="number" name="paydesk" id="paydesk" placeholder="Каса UAH" class="paydesk">
+					<input type="number" name="banknotes1000" id="1000" placeholder="1000 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes500" id="500" placeholder="500 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes200" id="200" placeholder="200 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes100" id="100" placeholder="100 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes50" id="50" placeholder="50 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes20" id="20" placeholder="20 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes10" id="10" placeholder="10 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes5" id="5" placeholder="5 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes2" id="2" placeholder="2 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="banknotes1" id="1" placeholder="1 UAH" class="banknotes<?=$data['class']?>"<?=$data['attr']?>>
+					<input type="number" name="paydesk" id="paydesk" placeholder="Каса UAH" class="paydesk<?=$data['class']?>"<?=$data['attr']?>>
 					<input type="hidden" name="cash" id="cash" class="banknotes">
 					<input type="hidden" name="tip" id="tip" class="banknotes">
-					<button class="btn btn-dark" id="cash-btn">Рахувати</button>
+					<button class="btn btn-dark<?=$data['btn-dis']?>" id="cash-btn"<?=$data['attr']?>>Рахувати</button>
 				</div>
-				<div class="info"><?=base64_decode($data['info'])?></div>
+				<div class="info<?=$data['class']?>"><?=base64_decode($data['info'])?></div>
 			</div>
-			<div class="hr"></div>
-			<div class="orders">
+			<div class="hr<?=$data['class']?>"></div>
+			<div class="orders<?=$data['class']?>">
 				<h3>Кількість заказів:</h3>
-				<div class="inform">
-					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders">
-					<div class="all-orders np d-flex justify-between align-center">
-						<button class="btn-plus plus">+</button>
-						<button class="btn-plus minus">–</button>
+				<div class="inform<?=$data['class']?>">
+					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders<?=$data['class']?>"<?=$data['attr']?>>
+					<div class="all-orders<?=$data['class']?> np d-flex justify-between align-center">
+						<button class="btn-plus plus<?=$data['btn-dis']?>"<?=$data['attr']?>>+</button>
+						<button class="btn-plus minus<?=$data['btn-dis']?>"<?=$data['attr']?>>–</button>
 					</div>
 					<!-- <input type="number" name="newPost" id="newPost" placeholder="НП" class="all-orders"> -->
-					<button class="btn btn-dark" id="orders-btn">Додати</button>
+					<button class="btn btn-dark<?=$data['btn-dis']?>" id="orders-btn"<?=$data['attr']?>>Додати</button>
 				</div>
-				<div class="menu-orders">
-					<div class="everyday">
+				<div class="menu-orders<?=$data['class']?>">
+					<div class="everyday<?=$data['class']?>">
 						<div><h4>Буденні дні:</h4></div>
 						<div class="everyday__orders"><h5>Замовлення: <?=$data['orders']?> шт.</h5></div>
 						<div class="everyday__new-post"><h5>Нова Пошта: <?=$data['newPost']?> шт.</h5></div>
 					</div>
-					<div class="weekend">
+					<div class="weekend<?=$data['class']?>">
 						<div><h4>Вихідні дні:</h4></div>
 						<div class="weekend__orders"><h5>Замовлення: <?=$data['weekendOrders']?> шт.</h5></div>
 						<div class="weekend__new-post"><h5>Нова Пошта: <?=$data['weekendNewPost']?> шт.</h5></div>
 					</div>
 				</div>
-				<div class="full-orders success"><h2>Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
-				<div class="salary"><h2 class="success">ЗП: <?=$data['salary']?> UAH</h2></div>
+				<div class="full-orders<?=$data['class']?>"><h2 class="success<?=$data['class']?>">Замовлення: <?=$data['fullOrders']?> шт.</h2></div>
+				<div class="salary<?=$data['class']?>"><h2 class="success<?=$data['class']?>">ЗП: <?=$data['salary']?> UAH</h2></div>
 			</div>
 		</div>
 
@@ -104,6 +104,7 @@
 		<script src="public/js/jquery360.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
+
 			let res = 0;
 			let tip = 0;
 
@@ -298,12 +299,18 @@
 						if (data['fullOrders'] < 1000) {
 							classFullOrders = 'warning';
 						}
+						if ('<?=$data['class']?>' != '') {
+							classFullOrders = '<?=$data['class']?>';
+						}
 						$('.full-orders').html('<h2 class="' + classFullOrders + '">Замовлення: ' + data['fullOrders'] + ' шт.</h2>');
 
 						if (data['salary'] < 15000) {
 							classSalary = 'danger';
 						} else if (data['salary'] < 20000) {
 							classSalary = 'warning';
+						}
+						if ('<?=$data['class']?>' != '') {
+							classSalary = '<?=$data['class']?>';
 						}
 						$('.salary').html('<h2 class="' + classSalary + '">ЗП: ' + data['salary'] + ' UAH</h2>');
 					}
