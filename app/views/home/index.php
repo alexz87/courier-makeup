@@ -197,7 +197,7 @@
 
 			$('#orders-btn').click(function() {
 				let orders = $('#orders').val();
-				let newPost = $('#newPost').val();
+				let newPost = 0;
 				
 				$.ajax({
 					url: '/',
@@ -207,7 +207,6 @@
 					cache: false,
 					success: function(data) {
 						$('#orders').val('');
-						// $('#newPost').val('');
 					} 
 				});
 			});
