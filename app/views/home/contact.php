@@ -58,12 +58,12 @@
 					$('#btn-teleg').attr('class', 'btn btn-warning');
 					$('#btn-teleg').html('Надіслати');
 				}, 1000);
-				let name = $('#name').val();
-				let tel = $('#tel').val();
-				let mess = $('#mess').val();
+				var name = $('#name').val();
+				var tel = $('#tel').val();
+				var mess = $('#mess').val();
 
 				$.ajax({
-					url: 'public/php/telegram.php',
+					url: '/home/contact',
 					type: 'POST',
 					data: {'name' : name, 'tel' : tel, 'mess' : mess},
 					dataType: 'html',

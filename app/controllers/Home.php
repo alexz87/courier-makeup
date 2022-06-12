@@ -117,6 +117,11 @@
 
         public function contact() {
 
+            if (isset($_POST['name'])) {
+                $telegram = $this->model('Telegram');
+                $res = $telegram->setTelegram($_POST['name'], $_POST['tel'], $_POST['mess']);
+            }
+
             $data = [
                 'lang' => 'ua',
                 'title' => 'Courier MAKEUP', 

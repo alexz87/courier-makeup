@@ -1,5 +1,5 @@
 /app/models/DB.php
+/app/models/Telegram.php
 /public/php/mysql_connect.php
-/public/php/telegram.php
 .htaccess
 /public/img
