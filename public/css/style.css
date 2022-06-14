@@ -264,11 +264,6 @@
 
 .telegram {width: 100%}
 .telegram > input, .telegram > textarea {width: calc(100% - 10px)}
-.logo-teleg {
-	max-width: 30px!important;
-	position: relative;
-	bottom: -7px;
-}
 
 /* --- FOOTER --- */
 
