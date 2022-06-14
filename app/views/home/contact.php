@@ -35,7 +35,7 @@
                     	<p><b>Мій email:</b> <a href="mailto:admin@alexproger.com" class="warning">admin@alexproger.com</a></p><br>
 					</div>
 					<div class="telegram p-1 d-flex col align-center">
-						<h3 class="mb-1">Напишіть (<img class="logo-teleg ml-1 mr-1" src="/public/img/telegram.svg">telegram):</h3>
+						<h3 class="mb-1">Напишіть у telegram:</h3>
 						<input class="border p-1 mb-1" type="text" id="name" placeholder="Введіть ім'я">
 						<input class="border p-1 mb-1" type="tel" id="tel" pattern="[0-9]{10}" placeholder="Введіть телефон (формат 0931234567:)" value="<?=$_COOKIE['login']?>">
 						<textarea class="border p-1 mb-1" id="mess" placeholder="Введіть повідомлення"></textarea>
