@@ -20,20 +20,12 @@
 			
 			<?php if ($_COOKIE['login'] == '0939947369'): ?>
 
-				<div class="mycash">
-					<h3>Мої кошти:</h3>
-					<div class="inform">
-						<input type="number" name="myCash" id="myCash" placeholder="Мої кошти" class="my-cash">
-						<button class="btn btn-dark" id="my-cash-btn">Додати</button>
-						<div class="my-cash warning"><b><?=$data['myCash']?> UAH</b></div>
-					</div>
-				</div>
-				<div class="hr"></div>
+				<!--  -->
 				<div class="tips">
 					<h3>Витрачені чайові:</h3>
 					<div class="inform">
-						<input type="number" name="spentTips" id="spentTips" placeholder="Чайові" class="my-tip">
-						<button class="btn btn-warning" id="spent-tips-btn">Додати</button>
+						<input type="number" name="spentTips" id="spentTips" placeholder="Витрата" class="my-tip">
+						<button class="btn btn-warning" id="spent-tips-btn">Зняти</button>
 						<div class="spent-tip danger"><b><?=$data['spentTips']?> UAH</b></div>
 					</div>
 				</div>
@@ -120,21 +112,6 @@
 				tip = (res - paydesk);
 				$("#cash").val(res);
 				$("#tip").val(tip);
-			});
-
-			$('#my-cash-btn').click(function() {
-				let myCash = $('#myCash').val();
-				
-				$.ajax({
-					url: '/',
-					type: 'POST',
-					data: {'myCash' : myCash},
-					dataType: 'html',
-					cache: false,
-					success: function(data) {
-						$('#myCash').val('');
-					} 
-				});
 			});
 
 			$('#spent-tips-btn').click(function() {
@@ -282,7 +259,6 @@
 					success: function(data) {
 						data = JSON.parse(data);
 
-						$('.my-cash').html('<b>' + data['myCash'] + ' UAH</b>');
 						$('.spent-tip').html('<b>' + data['spentTips'] + ' UAH</b>');
 						$('.my-tip').html('<b>' + data['tip'] + ' UAH</b>');
 

@@ -56,7 +56,6 @@
             $cash = '';
             $tip = 0;
             $spentTips = 0;
-            $myCash = 0;
             $salary = 0;
             $date = date('d.m.Y');
             $mounth = date('m');
@@ -70,13 +69,13 @@
             $weekendNewPost = 0;
             $reports = '';
             $sql = 'INSERT INTO courier_makeup(
-                    login, pass, photo, cash, tip, spentTips, myCash,
+                    login, pass, photo, cash, tip, spentTips,
                     salary, date, mounth, day, fullOrders,
                     allOrders, allWeekendOrders, orders,
                     newPost, weekendOrders, weekendNewPost,
                     reports
                 ) VALUES(
-                    :login, :pass, :photo, :cash, :tip, :spentTips, :myCash,
+                    :login, :pass, :photo, :cash, :tip, :spentTips,
                     :salary, :date, :mounth, :day, :fullOrders,
                     :allOrders, :allWeekendOrders, :orders,
                     :newPost, :weekendOrders, :weekendNewPost,
@@ -91,7 +90,6 @@
                 'cash' => $cash,
                 'tip' => $tip,
                 'spentTips' => $spentTips,
-                'myCash' => $myCash,
                 'salary' => $salary,
                 'date' => $date,
                 'mounth' => $mounth,

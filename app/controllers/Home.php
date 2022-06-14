@@ -14,20 +14,8 @@
             }
 
             if ($orders->getOrders()->day != date('d')) {
-                $orders->newDay(date('d'), 0);
+                $orders->newDay(date('d'));
                 $orders->setCashTip(0, 0, 0);
-            }
-
-            if (isset($_POST['myCash'])) {
-                if ($orders->getOrders()->day != date('d')) {
-    
-                    $orders->newDay(date('d'), $_POST['myCash']);
-                } else {
-                    $this->day = date('d');
-                    $myCash = $orders->getOrders()->myCash + $_POST['myCash'];
-    
-                    $orders->newDay(date('d'), $myCash);
-                }
             }
 
             if (isset($_POST['spentTips'])) {
@@ -66,7 +54,6 @@
             $weekendNewPost = $orders->getOrders()->weekendNewPost;
             $fullOrders = $orders->getOrders()->fullOrders;
             $salary = $orders->getOrders()->salary;
-            $myCash = $orders->getOrders()->myCash;
             $spentTips = $orders->getOrders()->spentTips;
             $tip = $orders->getOrders()->tip;
             $attr = '';
@@ -79,16 +66,16 @@
             }
 
             
-            if ($orders->getOrders()->salary > 999) {
-                $arr = str_split($orders->getOrders()->salary);
-                if (count($arr) > 4) {
-                    $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
-                } else {
-                    $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
-                }
-            } else {
-                $salary = $orders->getOrders()->salary;
-            }
+            // if ($orders->getOrders()->salary > 999) {
+            //     $arr = str_split($orders->getOrders()->salary);
+            //     if (count($arr) > 4) {
+            //         $salary = $arr[0] . $arr[1] . ' ' . $arr[2] . $arr[3] . $arr[4];
+            //     } else {
+            //         $salary = $arr[0] . ' ' . $arr[1] . $arr[2] . $arr[3];
+            //     }
+            // } else {
+            //     $salary = $orders->getOrders()->salary;
+            // }
 
 
             $data = [
@@ -104,7 +91,6 @@
 				'fullOrders' => $fullOrders,
                 'salary' => $salary,
                 'info' => $info,
-                'myCash' => $myCash,
                 'spentTips' => $spentTips,
                 'tip' => $tip,
                 'attr' => $attr,

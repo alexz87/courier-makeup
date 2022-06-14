@@ -7,7 +7,6 @@
 		private $weekendPay = 22.95;
 		private $cash;
 		private $tip;
-		private $myCash;
 		private $salary;
 		private $date;
 		private $mounth;
@@ -140,19 +139,18 @@
 			$this->cash = 
 					'<div><b>Сума:</b> ' . $its_cash . ' UAH</div>
 					<div><b>Каса</b> ' . $paydesk . ' UAH</div>
-					<div class="warning"><b>Зняти:</b> ' . $tip . ' UAH</div>
-					<div class="success"><b>Чайові:</b> ' . ($tip - $getTip->myCash) . ' UAH</div>';
-			$this->tip = $getTip->tip + ($tip - $getTip->myCash);
+					<div class="success"><b>Чайові:</b> ' . $tip . ' UAH</div>';
+			$this->tip = $getTip->tip + $tip;
 
 			$this->addCashTip();
 		}
 
-		public function newDay($day, $myCash) {
+		public function newDay($day) {
 			$id = $this->getUser()['id'];
 
-			$sql = "UPDATE `courier_makeup` SET `day` = :day, `myCash` = :myCash WHERE `id` = '$id'";
+			$sql = "UPDATE `courier_makeup` SET `day` = :day WHERE `id` = '$id'";
             $query = $this->_db->prepare($sql);
-            $query->execute(['day' => $day, 'myCash' => $myCash]);
+            $query->execute(['day' => $day]);
 		}
 
 		public function addOrders() {
