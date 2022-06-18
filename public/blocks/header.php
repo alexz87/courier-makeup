@@ -50,14 +50,14 @@
     <div class="menu" id="menu">
             <div class="close-menu" id="close"><h1 class="danger">X</h1></div>
             <div class="menu__logo">
-                <a href="/"><h1 class="link link-logo">MAKEUP</h1></a>
+                <a href="/"><h1 class="link link-logo warning">MAKEUP</h1></a>
             </div>
 
             <?php if ($_COOKIE['login'] != ''): ?>
                 <?php if ($_COOKIE['login'] == '0939947369'): ?>
                 
                     <div class="menu__link">
-                        <a href="/user/dashboard"><h3 class="link">admin</h3></a>
+                        <a href="/user/dashboard"><h3 class="link danger">admin</h3></a>
                     </div>
                     
                 <?php endif; ?>
