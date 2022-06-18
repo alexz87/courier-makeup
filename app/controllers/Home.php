@@ -18,17 +18,9 @@
                 $orders->setCashTip(0, 0, 0);
             }
 
-            // if (isset($_POST['myCash'])) {
-            //     if ($orders->getOrders()->day != date('d')) {
-    
-            //         $orders->newDay(date('d'), $_POST['myCash']);
-            //     } else {
-            //         $this->day = date('d');
-            //         $myCash = $orders->getOrders()->myCash + $_POST['myCash'];
-    
-            //         $orders->newDay(date('d'), $myCash);
-            //     }
-            // }
+            if (isset($_POST['myCash'])) {
+                $orders->setTip('-' . $_POST['myCash']);
+            }
 
             if (isset($_POST['spentTips'])) {
                 $orders->addSpentTips(($orders->getOrders()->spentTips + $_POST['spentTips']));
