@@ -157,14 +157,18 @@ body {
   border-color: #ccc!important;
 }
 
-.bg-success {background: var(--my-green)}
-.bg-warning {background: var(--my-orange)}
-.bg-danger {background: (--my-red)}
+.bg-success {background: var(--my-green)!important}
+.bg-warning {background: var(--my-orange)!important}
+.bg-danger {background: (--my-red)!important}
 
 .border {
   border: 2px solid #000;
   border-radius: 5px;
 }
+.b-radius-s {border-radius: 5px}
+.b-radius-m {border-radius: 10px}
+.b-radius-l {border-radius: 15px}
+.b-radius-xl {border-radius: 20px}
 
 .m-1 {margin: 10px}
 .m-2 {margin: 20px}
@@ -226,6 +230,7 @@ body {
 .justify-around {justify-content: space-around}
 .justify-center {justify-content: center}
 .align-center {align-items: center}
+.text-center {text-align: center}
 
 @keyframes bell {
   5% {transform: translateY(-10px)}

@@ -20,7 +20,15 @@
 			
 			<?php if ($_COOKIE['login'] == '0939947369'): ?>
 
-				<!--  -->
+				<div class="tips">
+					<h3>Чайові:</h3>
+					<div class="inform">
+						<input type="number" name="tip" id="add-tip" placeholder="Чайові" class="my-tip">
+						<button class="btn btn-success" id="tip-btn">Додати</button>
+						<div class="my-tip success"><b><?=$data['tip']?> UAH</b></div>
+					</div>
+				</div>
+				<div class="hr"></div>
 				<div class="tips">
 					<h3>Витрачені чайові:</h3>
 					<div class="inform">
@@ -30,12 +38,12 @@
 					</div>
 				</div>
 				<div class="hr"></div>
-				<div class="tips">
-					<h3>Чайові:</h3>
+				<div class="mycash">
+					<h3>Мої кошти:</h3>
 					<div class="inform">
-						<input type="number" name="tip" id="add-tip" placeholder="Чайові" class="my-tip">
-						<button class="btn btn-success" id="tip-btn">Додати</button>
-						<div class="my-tip success"><b><?=$data['tip']?> UAH</b></div>
+						<input type="number" name="myCash" id="myCash" placeholder="Витрата" class="my-tip">
+						<button class="btn btn-danger" id="my-cash-btn">Зняти</button>
+						<div class="my-cash danger"><b>–</b></div>
 					</div>
 				</div>
 				<div class="hr"></div>
@@ -64,7 +72,7 @@
 			</div>
 			<div class="hr<?=$data['class']?>"></div>
 			<div class="orders<?=$data['class']?>">
-				<h3>Кількість заказів:</h3>
+				<h3>Кількість замовлень:</h3>
 				<div class="inform<?=$data['class']?>">
 					<input type="number" name="orders" id="orders" placeholder="Замовлення" class="all-orders<?=$data['class']?>"<?=$data['attr']?>>
 					<div class="all-orders<?=$data['class']?> np d-flex justify-between align-center">
@@ -140,6 +148,25 @@
 					cache: false,
 					success: function(data) {
 						$('#add-tip').val('');
+					} 
+				});
+			});
+
+			$('#my-cash-btn').click(function() {
+				let myCash = $('#myCash').val();
+				$('.my-cash').html('<b>–' + myCash + ' UAH</b>');
+				setTimeout(function() {
+					$('.my-cash').html('<b>–</b>');
+				}, 2000);
+
+				$.ajax({
+					url: '/',
+					type: 'POST',
+					data: {'myCash' : myCash},
+					dataType: 'html',
+					cache: false,
+					success: function(data) {
+						$('#myCash').val('');
 					} 
 				});
 			});

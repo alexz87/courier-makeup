@@ -50,23 +50,21 @@
     <div class="menu" id="menu">
             <div class="close-menu" id="close"><h1 class="danger">X</h1></div>
             <div class="menu__logo">
-                <a href="/"><h1 class="link">MAKEUP</h1></a>
+                <a href="/"><h1 class="link link-logo">MAKEUP</h1></a>
             </div>
 
             <?php if ($_COOKIE['login'] != ''): ?>
-
-                <div class="menu__link">
-                    <a href="/"><h3 class="link">Головна</h3></a>
-                </div>
-				
                 <?php if ($_COOKIE['login'] == '0939947369'): ?>
                 
                     <div class="menu__link">
-                        <a href="/user/dashboard"><h3 class="link">Кабінет</h3></a>
+                        <a href="/user/dashboard"><h3 class="link">admin</h3></a>
                     </div>
                     
                 <?php endif; ?>
-					
+
+                <div class="menu__link">
+                    <a href="/"><h3 class="link">Головна</h3></a>
+                </div>	
                 <div class="menu__link">
                     <a href="/user/reports"><h3 class="link">Звіти</h3></a>
                 </div>

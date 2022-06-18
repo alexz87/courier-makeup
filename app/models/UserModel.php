@@ -35,6 +35,7 @@
         }
 
         public function addPhoto($id) {
+            // $id = $this->getID($login)['id'];
             $photo = 'IMG_' . $id . '.jpg';
             $sql = "UPDATE `courier_makeup` SET 
                 `photo` = :photo
@@ -104,12 +105,25 @@
                 'reports' => $reports
             ]);
 
-            $this->setAuth($this->login);
+            if ($_COOKIE['login'] == '') {
+                $this->setAuth($this->login);
+            }
+        }
+
+        public function deleteUser($id) {
+            unlink('public/img/IMG_' . $id . '.jpg');
+            $this->_db->query("DELETE FROM `courier_makeup` WHERE `id` = '$id'");
         }
         
         public function getUser() {
             $login = $_COOKIE['login'];
             $result = $this->_db->query("SELECT * FROM `courier_makeup` WHERE `login` = '$login'");
+
+            return $result->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function getID($id) {
+            $result = $this->_db->query("SELECT * FROM `courier_makeup` WHERE `id` = '$id'");
 
             return $result->fetch(PDO::FETCH_ASSOC);
         }

@@ -14,7 +14,7 @@
 	flex-direction: column;
 }
 .header__menu:hover{cursor: pointer}
-.header__logo {position: relative}
+.header__logo, .link-logo {position: relative}
 .header__logo::after {
 	content: 'courier';
 	width: 30px;
@@ -33,10 +33,11 @@
 /* --- MENU --- */
 
 .menu {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 350px;
+	height: 100vh;
 	display: none;
 	flex-direction: column;
 	justify-content: center;
@@ -52,12 +53,22 @@
 }
 .menu__link {
 	width: 90%;
-	padding: 40px 0;
+	padding: 35px 0;
 	font-size: 18px;
 	border-bottom: 2px solid var(--my-gray);
 	text-align: center;
 }
 .menu__link:last-child {border: 0}
+.link-logo::before {
+	content: 'courier';
+	width: 30px;
+	position: absolute;
+	top: 30px;
+	left: 55%;
+	font-size: 16px;
+	font-weight: 300;
+	color: var(--my-gray);
+}
 .link {color: var(--my-gray)}
 .close-menu {
 	position: absolute;
@@ -95,6 +106,7 @@
 	border-radius: 5px;
 	text-align: center;
 	font-size: 16px;
+	transition: all 600ms ease;
 }
 .np {border: 0}
 .btn-plus {
@@ -202,6 +214,7 @@
 .users {
 	margin: 20px 0;
 }
+.user h2 {min-height: 44px}
 .edit-btns {
 	width: 100%;
 	display: flex;
@@ -231,7 +244,8 @@
     border: 2px solid var(--my-green);
     margin: 10px 0;
 }
-#uploadPhoto {margin: 10px 0}
+#user-photo {width: 50px}
+#uploadPhoto {max-width: 250px!important}
 .add-photo {
 	margin-top: 10px;
 	width: 250px;
