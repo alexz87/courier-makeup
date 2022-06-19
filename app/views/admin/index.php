@@ -42,7 +42,7 @@
             </div>
             <div class="hr"></div>
             <div class="mt-2 mb-2">
-                <form class="d-flex col align-center mt-2 mb-2" action="/user/dashboard" enctype="multipart/form-data" method="post">
+                <form class="d-flex col align-center mt-2 mb-2" action="/admin/index" enctype="multipart/form-data" method="post">
                     <p class="mb-1"><b>Завантажте ваше фото:</b></p>
                     <input type="file" name="uploadPhoto" id="uploadPhoto" class="border p-1 mb-1">
                     <input type="" name="id" class="border p-1 mb-1" placeholder="Введіть id користувача:">
@@ -109,7 +109,7 @@
 				}, 1000);
 
                 $.ajax({
-                    url: '/user/dashboard',
+                    url: '/admin/index',
                     type: 'POST',
                     data: {'login' : login, 'pass' : pass, 're_pass' : re_pass},
                     dataType: 'html',
@@ -126,7 +126,7 @@
             function deleteUser(id) {
                 if (confirm('Ви дійсно хочете видалити аккаунт?') == true) {
                     $.ajax({
-                        url: '/user/dashboard',
+                        url: '/admin/index',
                         type: 'POST',
                         data: {'user_id' : id},
                         dataType: 'html',

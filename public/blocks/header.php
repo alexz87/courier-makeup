@@ -57,7 +57,7 @@
                 <?php if ($_COOKIE['login'] == '0939947369'): ?>
                 
                     <div class="menu__link">
-                        <a href="/user/dashboard"><h3 class="link danger">admin</h3></a>
+                        <a href="/admin/index"><h3 class="link danger">admin</h3></a>
                     </div>
                     
                 <?php endif; ?>
@@ -72,7 +72,7 @@
                     <a href="/home/contact"><h3 class="link">Контакт</h3></a>
                 </div>
                 <div class="menu__link">
-                    <form action="/user/dashboard" method="post">
+                    <form action="/admin/index" method="post">
                         <input type="hidden" name="exit_btn">
                         <button type="submit" class="btn btn-danger" id="back">Вийти</button><br>
                         <label for="exit_btn" class="warning"><?=$_COOKIE['login']?></label>
