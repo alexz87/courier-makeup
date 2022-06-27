@@ -41,7 +41,7 @@
                 <b>' . ($num + 1) . ' </b>
                     <img id="user-photo" src="/public/img/' . $users[$i]['photo'] . '" alt="user photo">
                     <b>id: ' . $users[$i]['id'] . '</b>
-                    <h2 class="warning text-center p-1">' . $users[$i]['login'] . '</h2>
+                    <a href="courier/' . $users[$i]['id'] . '"><h2 class="warning text-center p-1">' . $users[$i]['login'] . '</h2></a>
                     <button onclick="deleteUser(' . $users[$i]['id'] . ')" class="p-1 b-radius-s btn-danger">X</button>
                 </div>';
             }
@@ -57,6 +57,33 @@
             ];
 
             $this->view('admin/index', $data);
+        }
+
+        public function courier($id) {
+            $user = $this->model('Courier');
+
+            $courier = $user->getOneUser($id);
+            $html = '<div class="border p-2 mt-2 mb-2 d-flex col align-center">
+                        <div class="width-s">
+                            <img class="border" src="/public/img/' . $courier['photo'] . '" alt="courier">
+                        </div>
+                        <h3 class="warning">Дата: ' . $courier['date'] . ' р.</h3>
+                        <h2 class="success">Login: ' . $courier['login'] . '</h2>
+                        <h3>Заробітна плата: ' . $courier['salary'] . ' UAH</h3>
+                        <h3>Замовлення: ' . $courier['fullOrders'] . ' шт.</h3>
+                        <p class="danger">Останній вхід: ' . $courier['day'] . '.' . $courier['mounth'] . '</p>
+                        <div class="border p-1 mt-1 mb-1">' . base64_decode($courier['cash']) . '</div>
+                        <button class="btn btn-danger">delete</button>
+                    </div>';
+
+            $data = [
+                'lang' => 'ua',
+                'title' => 'Courier', 
+                'content' => 'Courier',
+                'courier' => $html
+            ];
+
+            $this->view('admin/courier', $data);
         }
 
         public function orders() {
