@@ -37,12 +37,14 @@
             $user_info = '';
             for ($i = 0; $i < count($users); $i++) {
                 $num = $i;
-                $user_info .= '<div class="user border d-flex justify-between align-center p-1 mb-1" id="' . $users[$i]['id'] . '">
-                <b>' . ($num + 1) . ' </b>
-                    <img id="user-photo" src="/public/img/' . $users[$i]['photo'] . '" alt="user photo">
-                    <b>id: ' . $users[$i]['id'] . '</b>
-                    <a href="courier/' . $users[$i]['id'] . '"><h2 class="warning text-center p-1">' . $users[$i]['login'] . '</h2></a>
-                    <button onclick="deleteUser(' . $users[$i]['id'] . ')" class="p-1 b-radius-s btn-danger">X</button>
+                $user_info .= '<div class="user border p-1 mb-1" id="' . $users[$i]['id'] . '">
+                    <a href="/admin/courier/' . $users[$i]['id'] . '" class="d-flex justify-between align-center">
+                        <b>' . ($num + 1) . ' </b>
+                        <img id="user-photo" src="/public/img/' . $users[$i]['photo'] . '" alt="user photo">
+                        <p>id: <b class="success">' . $users[$i]['id'] . '</b></p>
+                        <p>date: <b class="danger">' . $users[$i]['day'] . '.' . $users[$i]['mounth'] . '</b></p>
+                        <button onclick="deleteUser(' . $users[$i]['id'] . ')" class="p-1 b-radius-s btn-danger">X</button>
+                    </a>
                 </div>';
             }
 
@@ -73,7 +75,6 @@
                         <h3>Замовлення: ' . $courier['fullOrders'] . ' шт.</h3>
                         <p class="danger">Останній вхід: ' . $courier['day'] . '.' . $courier['mounth'] . '</p>
                         <div class="border p-1 mt-1 mb-1">' . base64_decode($courier['cash']) . '</div>
-                        <button class="btn btn-danger">delete</button>
                     </div>';
 
             $data = [

@@ -18,7 +18,7 @@
 
         <div class="container">
             <div class="courier">
-
+                <div class="mt-3"><a href="/admin" class="btn btn-success">Назад</a></div>
                 <?=$data['courier']?>
 
             </div>

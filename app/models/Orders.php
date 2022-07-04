@@ -74,6 +74,7 @@
 				} else {
 					$bgColor = 'bg-success';
 				}
+				$aaa = 'PGRpdiBjbGFzcz0icmVwb3J0IGJnLXdhcm5pbmciPgoJCQkJCQkJCTxoMj7QotGA0LDQstC10L3RjCAyMDIyINGA0L7QutGDPC9oMj4KCQkJCQkJCQk8aDM+0JfQsNCz0LDQu9GM0L3QviDQt9Cw0LzQvtCy0LvQtdC90Yw6IDg0NCDRiNGCLjwvaDM+CgkJCQkJCQkJPGI+0JHRg9C00LXQvdC90ZYg0LfQsNC80L7QstC70LXQvdC90Y86PC9iPiA4MjEg0YjRgi48YnI+CgkJCQkJCQkJPGI+0J3QvtCy0LAg0J/QvtGI0YLQsDo8L2I+IDIzINGI0YIuPGJyPgoJCQkJCQkJCTxiPtCS0LjRhdGW0LTQvdGWINC30LDQvNC+0LLQu9C10L3QvdGPOjwvYj4gMCDRiNGCLjxicj4KCQkJCQkJCQk8Yj7QndC+0LLQsCDQn9C+0YjRgtCwINGDINCy0LjRhdGW0LTQvdGWOjwvYj4gMCDRiNGCLjxicj4KCQkJCQkJCQk8aDM+0JfQsNGA0L7QsdGW0YLQvdCwINC/0LvQsNGC0LA6IDE5MzcwIFVBSDwvaDM+CgkJCQkJCQk8L2Rpdj4=';
 				$report = '<div class="report ' . $bgColor . '">
 								<h2>' . $this->mounthFunc() . date('Y') . ' року</h2>
 								<h3>Загально замовлень: ' . $getOrders->fullOrders . ' шт.</h3>
@@ -83,7 +84,7 @@
 								<b>Нова Пошта у вихідні:</b> ' . $getOrders->weekendNewPost . ' шт.<br>
 								<h3>Заробітна плата: ' . $getOrders->salary . ' UAH</h3>
 							</div>';
-				$this->reports = $getOrders->reports . $report;
+				$this->reports = base64_decode($getOrders->reports) . $report;
 
 				$this->addReports();
 
@@ -151,6 +152,14 @@
 			$sql = "UPDATE `courier_makeup` SET `day` = :day WHERE `id` = '$id'";
             $query = $this->_db->prepare($sql);
             $query->execute(['day' => $day]);
+		}
+		
+		public function newMounth($mounth) {
+			$id = $this->getUser()['id'];
+
+			$sql = "UPDATE `courier_makeup` SET `mounth` = :mounth WHERE `id` = '$id'";
+            $query = $this->_db->prepare($sql);
+            $query->execute(['mounth' => $mounth]);
 		}
 
 		public function addOrders() {
