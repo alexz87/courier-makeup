@@ -72,6 +72,9 @@
                     <a href="/home/contact"><h3 class="link">Контакт</h3></a>
                 </div>
                 <div class="menu__link">
+                    <a href="/user/edit"><h3 class="link">Налаштування</h3></a>
+                </div>
+                <div class="menu__link">
                     <form action="/admin/index" method="post">
                         <input type="hidden" name="exit_btn">
                         <button type="submit" class="btn btn-danger" id="back">Вийти</button><br>

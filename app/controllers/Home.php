@@ -15,8 +15,6 @@
 
             if ($orders->getOrders()->day != date('d')) {
                 $orders->newDay(date('d'));
-                //$orders->newMounth(date('m'));
-                //$orders->newYear(date('Y'));
                 $orders->setCashTip(0, 0, 0);
             }
 

@@ -62,4 +62,17 @@
           
             $this->view('user/auth', $data);
         }
+
+        public function edit() {
+            $user = $this->model('UserModel');
+            $courier = $this->model('Orders');
+            
+            $data = [
+                'lang' => 'ua',
+                'title' => 'Реєстрація', 
+                'content' => 'Реєстрація користувача'
+            ];
+          
+            $this->view('user/reg', $data);
+        }
     }

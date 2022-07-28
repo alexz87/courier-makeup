@@ -12,6 +12,7 @@
 		private $mounth;
 		private $mounthDec;
 		private $day;
+		private $tariff;
 		private $fullOrders;
 		private $allOrders;
 		private $allWeekendOrders;

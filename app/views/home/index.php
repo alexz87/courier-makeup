@@ -18,7 +18,7 @@
 		
 		<div class="block container">
 			
-			<?php if ($_COOKIE['login'] == '0939947369'): ?>
+			<?php if ($_COOKIE['login'] == '093994736'): ?>
 
 				<div class="tips">
 					<h3>Чайові:</h3>
