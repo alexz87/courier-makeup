@@ -63,11 +63,11 @@
             $attr = '';
             $class = '';
             $btndis = '';
-            if (date('N') == 6 || date('N') == 7) {
-                $attr = ' disabled';
-                $class = ' disabled';
-                $btndis = ' btn-dis';
-            }
+            // if (date('N') == 6 || date('N') == 7) {
+            //     $attr = ' disabled';
+            //     $class = ' disabled';
+            //     $btndis = ' btn-dis';
+            // }
 
             
             // if ($orders->getOrders()->salary > 999) {
