@@ -3,8 +3,8 @@
 	require 'DB.php';
 
 	class Orders {
-		private $pay = 22.95;
-		private $weekendPay = 22.95;
+		private $pay = 23.50;
+		private $weekendPay = 23.50;
 		private $cash;
 		private $tip;
 		private $salary;

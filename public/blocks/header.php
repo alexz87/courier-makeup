@@ -54,7 +54,7 @@
             </div>
 
             <?php if ($_COOKIE['login'] != ''): ?>
-                <?php if ($_COOKIE['login'] == '0939947369'): ?>
+                <?php if ($_COOKIE['login'] == '0939947369' || $_COOKIE['login'] == '0635968415'): ?>
                 
                     <div class="menu__link">
                         <a href="/admin/index"><h3 class="link danger">admin</h3></a>
